@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.benja.tpu_tsb_2/org.benja.tpu_tsb_2.HelloApplication</mainClass>
+                            <mainClass>org.benja.tpu_tsb_2/org.benja.tpu_tsb_2.ui.MainApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
