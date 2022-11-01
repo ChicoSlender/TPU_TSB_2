@@ -1,12 +1,19 @@
 package org.benja.tpu_tsb_2.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class MainController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class MainController implements Initializable {
+
+    public VBox window;
     @FXML
     private MenuItem btnQuit;
 
@@ -21,7 +28,8 @@ public class MainController {
 
     @FXML
     void btnQuitClick(ActionEvent event) {
-
+        Stage stage = (Stage) window.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -34,4 +42,8 @@ public class MainController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
