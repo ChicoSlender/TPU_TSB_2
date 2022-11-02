@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    private SeriesIndexController seriesIndexController;
     public VBox window;
     public Button btnConsulta;
     @FXML
@@ -47,7 +48,8 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        this.seriesIndexController = new SeriesIndexController();
+        this.seriesIndexController.proccessDataFile();
     }
     @FXML
     public void btnConsultaClick(ActionEvent actionEvent) {
