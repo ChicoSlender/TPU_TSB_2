@@ -2,11 +2,13 @@ package org.benja.tpu_tsb_2.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.benja.tpu_tsb_2.business.SeriesIndexController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +16,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     public VBox window;
+    public Button btnConsulta;
     @FXML
     private MenuItem btnQuit;
 
@@ -44,6 +47,10 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+    @FXML
+    public void btnConsultaClick(ActionEvent actionEvent) {
 
     }
 }
