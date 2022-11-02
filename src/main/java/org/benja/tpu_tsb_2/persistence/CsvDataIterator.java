@@ -4,19 +4,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
  * Clase utilizada para cargar datos desde el archivo csv, fila por fila.
- * Está implementada como un pseudo iterator simple, con los métodos hasNextRow() y nextRow()
+ * Está implementada como un iterator simple, con los métodos hasNext() y next()
  * para recorrer fila por fila el archivo en un ciclo while.
  * */
-public class CsvDataLoader {
+public class CsvDataIterator implements Iterator<String[]> {
     private File csvFile;
     private Scanner fileScanner;
 
-    public CsvDataLoader() {
-        URL fileUrl = CsvDataLoader.class.getResource("series_data_clean.csv");
+    public CsvDataIterator() {
+        URL fileUrl = CsvDataIterator.class.getResource("series_data_clean.csv");
 
         if (fileUrl == null) {
             throw new NullPointerException("File url is null");
@@ -26,10 +27,6 @@ public class CsvDataLoader {
             this.csvFile = new File(fileUrl.toURI());
         } catch (URISyntaxException e) {
             throw new RuntimeException("Error leyendo el path del archivo");
-        }
-
-        if (this.csvFile == null) {
-            throw new NullPointerException("CSV file is null");
         }
 
         try {
@@ -43,7 +40,8 @@ public class CsvDataLoader {
      *
      * @return si existe otra fila para ser leida
      * */
-    public boolean hasNextRow() {
+    @Override
+    public boolean hasNext() {
         return this.fileScanner.hasNextLine();
     }
 
@@ -54,11 +52,13 @@ public class CsvDataLoader {
      * @return array de celdas de la fila leida representadas como strings
      * @throws NullPointerException si no existe otra fila para ser leida
      * */
-    public String[] nextRow() throws NullPointerException {
-        if (!hasNextRow()) {
+    @Override
+    public String[] next() throws NullPointerException {
+        if (!hasNext()) {
             throw new NullPointerException("El archivo no tiene otra fila para leer");
         }
 
         return this.fileScanner.nextLine().split(",");
     }
+
 }
