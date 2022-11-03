@@ -37,13 +37,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.benja.tpu_tsb_2.ui.SeriesListController">
+<VBox prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.benja.tpu_tsb_2.ui.SeriesRatingListController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="265.0" layoutY="78.0" prefHeight="377.0" prefWidth="613.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="14.0" layoutY="14.0" prefHeight="377.0" prefWidth="613.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <content>
-                  <TableView fx:id="seriesTable" prefHeight="375.0" prefWidth="610.0">
+                  <TableView fx:id="seriesRatingTable" prefHeight="375.0" prefWidth="610.0">
                   </TableView>
                </content>
             </ScrollPane>

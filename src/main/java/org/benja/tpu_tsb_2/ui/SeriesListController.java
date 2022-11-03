@@ -26,7 +26,7 @@ public class SeriesListController implements Initializable {
     private void initTable() {
         String[] titles = new String[] {"Título", "Emisión", "Calificación", "Dur. episodios", "Puntaje", "Sinopsis", "Votos", "Protagonista 1", "Protagonista 2", "Protagonista 3", "Protagonista 4"};
         String[] properties = new String[] {"title", "seriesRuntime", "certificate", "episodesRuntime", "imdbRating", "overview", "votes", "star1", "star2", "star3", "star4"};
-        double[] widths = new double[] {200, 100, 75, 100, 75, 250, 75, 100, 100, 100, 100};
+        double[] widths = new double[] {200, 100, 75, 100, 75, 350, 75, 100, 100, 100, 100};
 
         for (int i = 0; i < titles.length; i++) {
             TableColumn<SerieTableRow, String> column = new TableColumn<>(titles[i]);

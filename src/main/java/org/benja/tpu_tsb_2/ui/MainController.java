@@ -80,6 +80,9 @@ public class MainController implements Initializable {
             case LISTADO_SERIES:
                 showSeriesDetailForSelectedGenre();
                 break;
+            case CANTIDAD_SERIES_PUNTUACION:
+                showSeriesCountPerRatingForSelectedGenre();
+                break;
         }
     }
 
@@ -94,15 +97,39 @@ public class MainController implements Initializable {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("series-list-view.fxml"));
-            Scene seriesListScene = new Scene(fxmlLoader.load(), 640, 400);
-            SeriesListController seriesListController = (SeriesListController) fxmlLoader.getController();
+            javafx.scene.Parent newSceneParent = fxmlLoader.load();
+            VBox newWindowRoot = fxmlLoader.getRoot();
+            Scene seriesListScene = new Scene(newSceneParent, newWindowRoot.getPrefWidth(), newWindowRoot.getPrefHeight());
+            SeriesListController seriesListController = fxmlLoader.getController();
 
             Stage newStage = new Stage();
             newStage.setScene(seriesListScene);
+            newStage.setTitle("Lista de series del género " + this.selectedGenre.toLowerCase());
             newStage.show();
             seriesListController.fillTable(series);
         } catch (IOException e) {
             throw new RuntimeException("Error cargando vista de la lista de series por género");
+        }
+    }
+
+    private void showSeriesCountPerRatingForSelectedGenre() {
+        Integer[] countPerRating = this.seriesIndexController.getSeriesCountPerRatingForGenre(this.selectedGenre);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("series-rating-list-view.fxml"));
+            javafx.scene.Parent newSceneParent = fxmlLoader.load();
+            VBox newWindowRoot = fxmlLoader.getRoot();
+            Scene seriesListScene = new Scene(newSceneParent, newWindowRoot.getPrefWidth(), newWindowRoot.getPrefHeight());
+            SeriesRatingListController seriesListController = fxmlLoader.getController();
+
+            Stage newStage = new Stage();
+            newStage.setScene(seriesListScene);
+            newStage.setTitle("Cantidad de series por puntaje para el género " + this.selectedGenre.toLowerCase());
+            newStage.setResizable(false);
+            newStage.show();
+            seriesListController.fillTable(countPerRating);
+        } catch (IOException e) {
+            throw new RuntimeException("Error cargando vista de la lista cantidad de series para cada puntaje por género");
         }
     }
 
