@@ -1,5 +1,8 @@
 package org.benja.tpu_tsb_2.support;
 
+/**
+ * Clase puramente de datos que encapsula la información obtenida del csv correspondiente a una serie.
+ * */
 public class Serie {
     private String title;
     private String seriesRuntime;

@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller para la ventana principal del programa.
+ * Contiene las funcionalidades de tomar las opciones de los combos seleccionadas por el usuario y realizar las consultas correspondientes a la capa de negocio.
+ * */
 public class MainController implements Initializable {
 
     public Label labelResultadoCantidad;
@@ -41,16 +45,9 @@ public class MainController implements Initializable {
         getStage().close();
     }
 
-    @FXML
-    void comboGeneroValueChange(ActionEvent event) {
-
-    }
-
-    @FXML
-    void comboTipoDatoValueChange(ActionEvent event) {
-
-    }
-
+    /**
+     * Inicializa los combo box con los géneros y los tipos de datos disponibles e inicializa el controlador que encapsula la lógica de la capa de negocio
+     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.labelResultadoCantidad.setText("");
@@ -70,6 +67,9 @@ public class MainController implements Initializable {
         EDimensionDatos selectedDimension = this.comboTipoDato.getValue();
 
         if (this.selectedGenre == null || selectedDimension == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Debe seleccionar un género y/o un tipo de dato a visualizar", ButtonType.OK);
+            alert.setTitle("Error de validación");
+            alert.show();
             return;
         }
 
@@ -86,12 +86,19 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Consulta a la capa de negocio la cantidad de series para el género seleccionado y lo muestra en un label en la ventana principal
+     * */
     private void showSeriesCountForSelectedGenre() {
         Integer seriesCount = this.seriesIndexController.getSeriesCountForGenre(this.selectedGenre);
 
-        this.labelResultadoCantidad.setText("Cantidad de series del género " + this.selectedGenre + ": " + seriesCount.toString());
+        this.labelResultadoCantidad.setText("Cantidad de series del género " + this.selectedGenre + ": " + seriesCount);
     }
 
+    /**
+     * Consulta a la capa de negocio el listado detallado de series que pertenecen al género seleccionado y crea una nueva ventana
+     * para mostrar los resultados de la consulta en una tabla
+     * */
     private void showSeriesDetailForSelectedGenre() {
         List<Serie> series = this.seriesIndexController.getSeriesDetailsForGenre(this.selectedGenre);
 
@@ -112,6 +119,10 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Consulta a la capa de negocio la cantidad de series por puntaje que pertenecen al género seleccionado y crea una nueva ventana
+     * para mostrar los resultados de la consulta en una tabla
+     * */
     private void showSeriesCountPerRatingForSelectedGenre() {
         Integer[] countPerRating = this.seriesIndexController.getSeriesCountPerRatingForGenre(this.selectedGenre);
 
@@ -133,6 +144,11 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Devuelve la referencia al stage de la ventana.
+     * Si dicha referencia es nula, se la obtiene en el momento y la setea en la propiedad stage que luego se retorna.
+     * Método seguro para obtener una referencia que no existe al momento de la inicialización del controller.
+     * */
     private Stage getStage() {
         if (this.stage == null) {
             this.stage = (Stage) window.getScene().getWindow();

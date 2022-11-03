@@ -1,5 +1,9 @@
 package org.benja.tpu_tsb_2.support;
 
+/**
+ * Clase auxiliar utilizada por TSBHashTable para el manejo de números primos.
+ * Legada de la entrega anterior del TPU
+ * */
 public class PrimeNumberGenerator {
     public int nextPrime(int n) {
         int prime = n;
