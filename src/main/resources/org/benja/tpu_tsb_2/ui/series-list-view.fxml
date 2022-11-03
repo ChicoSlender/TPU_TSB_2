@@ -32,39 +32,22 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox fx:id="window" prefHeight="160.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.benja.tpu_tsb_2.ui.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.benja.tpu_tsb_2.ui.SeriesListController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem fx:id="btnQuit" mnemonicParsing="false" onAction="#btnQuitClick" text="Quit" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="160.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
-         <children>
-            <ComboBox fx:id="comboGenero" layoutX="90.0" layoutY="33.0" onAction="#comboGeneroValueChange" prefWidth="150.0" />
-            <ComboBox fx:id="comboTipoDato" layoutX="371.0" layoutY="33.0" onAction="#comboTipoDatoValueChange" prefWidth="150.0" />
-            <Button fx:id="btnConsulta" layoutX="547.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnConsultaClick" prefHeight="25.0" prefWidth="122.0" text="Consultar" />
-            <Label fx:id="labelResultadoCantidad" layoutX="30.0" layoutY="95.0" prefHeight="17.0" prefWidth="637.0" text="RESULTADO" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Label layoutX="30.0" layoutY="37.0" text="Género:" />
-            <Label layoutX="266.0" layoutY="37.0" text="Dato a consultar:" />
-         </children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="377.0" prefWidth="613.0">
+               <content>
+                  <TableView fx:id="seriesTable" prefHeight="375.0" prefWidth="610.0">
+                  </TableView>
+               </content>
+            </ScrollPane>
+      </children>
     </AnchorPane>
   </children>
 </VBox>

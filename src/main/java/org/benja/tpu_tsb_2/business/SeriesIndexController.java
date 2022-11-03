@@ -39,6 +39,36 @@ public class SeriesIndexController {
         return quantityPerGender.keySet().toArray(new String[0]);
     }
 
+    public int getSeriesCountForGenre(String genre) {
+        int count = 0;
+        if (this.quantityPerGender.containsKey(genre)) {
+            count = this.quantityPerGender.get(genre);
+        }
+
+        return count;
+    }
+
+    public List<Serie> getSeriesDetailsForGenre(String genre) {
+        List<Serie> list = new ArrayList<>();
+
+        if (this.seriesPerGender.containsKey(genre)) {
+            list = this.seriesPerGender.get(genre);
+        }
+
+        return list;
+    }
+
+    public Integer[] getSeriesCountPerRatingForGenre(String genre) {
+        Integer[] counters = new Integer[10];
+        Arrays.fill(counters, 0);
+
+        if (this.quantityPerScorePerGender.containsKey(genre)) {
+            counters = this.quantityPerScorePerGender.get(genre);
+        }
+
+        return counters;
+    }
+
     /**
      * Inicializa los mapas con los datos provenientes del archivo csv
      * */
